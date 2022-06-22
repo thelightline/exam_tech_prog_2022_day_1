@@ -1,0 +1,15 @@
+FROM ubuntu
+
+LABEL author="Tatarchuk"
+
+RUN apt update -y && apt upgrade -y && apt install -y build-essential g++
+
+WORKDIR /root/
+RUN mkdir MyProj_Tatarchuk
+WORKDIR /root/MyProj_Tatarchuk/
+COPY . /root/MyProj_Tatarchuk/
+
+RUN g++ main.cpp -o ./myProgram
+
+
+ENTRYPOINT [ "./myProgram" ]
